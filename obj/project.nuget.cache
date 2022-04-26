@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "5whd/ekP8LWBy2eN6PlVRzJyNlAT2LueNUkd95+4/iDWiz+9xbm2fW6xSLYDUUmLvjmPetEAvNE2Ybh8ukEZyw==",
+  "success": true,
+  "projectFilePath": "/home/michael/Code/stalquer-server/stalquer-server.csproj",
+  "expectedPackageFiles": [
+    "/home/michael/.nuget/packages/microsoft.extensions.apidescription.server/3.0.0/microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "/home/michael/.nuget/packages/microsoft.openapi/1.2.3/microsoft.openapi.1.2.3.nupkg.sha512",
+    "/home/michael/.nuget/packages/swashbuckle.aspnetcore/5.6.3/swashbuckle.aspnetcore.5.6.3.nupkg.sha512",
+    "/home/michael/.nuget/packages/swashbuckle.aspnetcore.swagger/5.6.3/swashbuckle.aspnetcore.swagger.5.6.3.nupkg.sha512",
+    "/home/michael/.nuget/packages/swashbuckle.aspnetcore.swaggergen/5.6.3/swashbuckle.aspnetcore.swaggergen.5.6.3.nupkg.sha512",
+    "/home/michael/.nuget/packages/swashbuckle.aspnetcore.swaggerui/5.6.3/swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512"
+  ],
+  "logs": []
+}
