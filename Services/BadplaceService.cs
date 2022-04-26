@@ -1,6 +1,7 @@
 using System;
 using System.Net.WebSockets;
 using System.Text;
+using System.Text.Json;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -9,6 +10,7 @@ using Microsoft.Extensions.Logging;
 using stalquer_server.Hubs;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.SignalR;
+using System.Net.Http;
 using stalquer_server.Helpers;
 using stalquer_server.Models;
 
@@ -19,7 +21,7 @@ namespace stalquer_server.Services
         private readonly IHubContext<BadplaceHub> _hub;
         private readonly BadPlaceData _badplaceData;
 
-        public IEnumerable<BadPlaceResponse> LatestResponse { get; private set; }
+        public IEnumerable<BadPlaceResponse> LatestResponse { get; set; }
 
         private Timer _timer;
         public BadplaceService(IHubContext<BadplaceHub> hub, BadPlaceData badPlaceData)
@@ -35,17 +37,23 @@ namespace stalquer_server.Services
         async void GetAndPushData(object state)
         {
             System.Console.WriteLine("Fetching data and broadcasting!");
-            LatestResponse = await _badplaceData.GetBadplaceData();
-            // try
-            // {
-            //     LatestResponse = await _badplaceData.GetBadplaceData();
-            // }
-            // catch (HttpRequestException)
-            // {
-            //     GetIssuesError = true;
-            //     LatestIssues = Array.Empty<GitHubIssue>();
-            // }
-            await _hub.Clients.All.SendAsync("ReceiveMessage", "AM I GLOBAL DADDY?!?!?!?!?");
+            try
+            {
+                LatestResponse = await _badplaceData.GetBadplaceData();
+
+            }
+            catch (HttpRequestException e)
+            {
+                Console.WriteLine("Error fetching from badplace.");
+                // GetIssuesError = true;
+                // LatestIssues = Array.Empty<GitHubIssue>();
+            }
+
+            // Broadcast the result if any to all clients.
+            var badplaceList = LatestResponse as List<BadPlaceResponse>;
+            if (badplaceList.Count > 0) {
+              await _hub.Clients.All.SendAsync("ReceiveMessage", JsonSerializer.Serialize(LatestResponse));
+            }
         }
         public Task StopAsync(CancellationToken cancellationToken)
         {

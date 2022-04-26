@@ -5,7 +5,7 @@ namespace stalquer_server.Models
 {
     public class Player
     {
-        public string Ping { get; set; }
+        // public string Ping { get; set; }
         public bool Spec { get; set; }
         public string Name { get; set; }
         public int Time { get; set; }
