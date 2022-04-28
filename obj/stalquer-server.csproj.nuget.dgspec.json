@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "/home/michael/Code/stalquer-server/stalquer-server.csproj": {}
+    "/Users/michael/Code/stalquer/stalquer-server.csproj": {}
   },
   "projects": {
-    "/home/michael/Code/stalquer-server/stalquer-server.csproj": {
+    "/Users/michael/Code/stalquer/stalquer-server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/michael/Code/stalquer-server/stalquer-server.csproj",
+        "projectUniqueName": "/Users/michael/Code/stalquer/stalquer-server.csproj",
         "projectName": "stalquer-server",
-        "projectPath": "/home/michael/Code/stalquer-server/stalquer-server.csproj",
-        "packagesPath": "/home/michael/.nuget/packages/",
-        "outputPath": "/home/michael/Code/stalquer-server/obj/",
+        "projectPath": "/Users/michael/Code/stalquer/stalquer-server.csproj",
+        "packagesPath": "/Users/michael/.nuget/packages/",
+        "outputPath": "/Users/michael/Code/stalquer/obj/",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "/home/michael/.nuget/NuGet/NuGet.Config"
+          "/Users/michael/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -41,6 +44,10 @@
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[5.6.3, )"
+            },
+            "System.Runtime.Caching": {
+              "target": "Package",
+              "version": "[6.0.0, )"
             }
           },
           "imports": [
@@ -61,7 +68,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/home/michael/.dotnet/sdk/5.0.212/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.402/RuntimeIdentifierGraph.json"
         }
       }
     }
