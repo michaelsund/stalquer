@@ -19,15 +19,19 @@ namespace stalquer_server.Services
     public class BadplaceService : IHostedService
     {
         private readonly IHubContext<BadplaceHub> _hub;
+
+        // The singleton store for use with controllers
+        private IBadplaceResponseList _badplaceResponseList;
         private readonly BadPlaceData _badplaceData;
 
         public IEnumerable<BadPlaceResponse> LatestResponse { get; set; }
 
         private Timer _timer;
-        public BadplaceService(IHubContext<BadplaceHub> hub, BadPlaceData badPlaceData)
+        public BadplaceService(IHubContext<BadplaceHub> hub, BadPlaceData badPlaceData, IBadplaceResponseList badplaceResponseList)
         {
             _hub = hub;
             _badplaceData = badPlaceData;
+            _badplaceResponseList = badplaceResponseList;
         }
         public Task StartAsync(CancellationToken cancellationToken)
         {
@@ -50,6 +54,7 @@ namespace stalquer_server.Services
             var badplaceList = LatestResponse as List<BadPlaceResponse>;
             if (badplaceList.Count > 0)
             {
+                _badplaceResponseList.BadplaceResponses = LatestResponse;
                 // Broadcast to signalr clients
                 await _hub.Clients.All.SendAsync("Update", JsonSerializer.Serialize(LatestResponse));
             }

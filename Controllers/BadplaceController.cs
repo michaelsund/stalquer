@@ -12,24 +12,16 @@ namespace stalquer_server.Controllers
     [Route("[controller]")]
     public class BadPlaceController : ControllerBase
     {
-
-        // public BadPlaceController(MemoryCache memoryCache)
-        // {
-        //     _memoryCache = memoryCache;
-        // }
+        private IBadplaceResponseList _badplaceResponseList;
+        public BadPlaceController(IBadplaceResponseList badplaceResponseList)
+        {
+            _badplaceResponseList = badplaceResponseList;
+        }
 
         [HttpGet]
-        public List<BadPlaceResponse> Get()
+        public IEnumerable<BadPlaceResponse> Get()
         {
-            // var rng = new Random();
-            // return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            // {
-            //     Date = DateTime.Now.AddDays(index),
-            //     TemperatureC = rng.Next(-20, 55),
-            //     Summary = Summaries[rng.Next(Summaries.Length)]
-            // })
-            // .ToArray();
-            return new List<BadPlaceResponse>();
+            return _badplaceResponseList.BadplaceResponses;
         }
     }
 }

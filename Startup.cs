@@ -36,7 +36,8 @@ namespace stalquer_server
             });
             services.AddSignalR();
             services.AddHttpClient<BadPlaceData>();
-            services.AddSingleton<IBadplaceResponse>(new BadPlaceResponse());
+            // Singleton store that badplaceservice updates and controller consumes.
+            services.AddSingleton<IBadplaceResponseList>(new BadPlaceResponseList());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
