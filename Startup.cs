@@ -30,10 +30,10 @@ namespace stalquer_server
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "stalquer_server", Version = "v1" });
-            });
+            // services.AddSwaggerGen(c =>
+            // {
+            //     c.SwaggerDoc("v1", new OpenApiInfo { Title = "stalquer_server", Version = "v1" });
+            // });
             services.AddSignalR();
             services.AddHttpClient<BadPlaceData>();
             // Singleton store that badplaceservice updates and controller consumes.
@@ -46,20 +46,20 @@ namespace stalquer_server
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "stalquer_server v1"));
+                // app.UseSwagger();
+                // app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "stalquer_server v1"));
             }
 
             app.UseHttpsRedirection();
-
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
             app.UseRouting();
-
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
                 endpoints.MapHub<BadplaceHub>("/badplaceHub");
+                endpoints.MapFallbackToFile("index.html").AllowAnonymous();
             });
         }
     }

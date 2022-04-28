@@ -18,6 +18,11 @@ namespace stalquer_server.Services
 {
     public class BadplaceService : IHostedService
     {
+        JsonSerializerOptions serializeOptions = new JsonSerializerOptions
+        {
+            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+            WriteIndented = true
+        };
         private readonly IHubContext<BadplaceHub> _hub;
 
         // The singleton store for use with controllers
@@ -56,7 +61,7 @@ namespace stalquer_server.Services
             {
                 _badplaceResponseList.BadplaceResponses = LatestResponse;
                 // Broadcast to signalr clients
-                await _hub.Clients.All.SendAsync("Update", JsonSerializer.Serialize(LatestResponse));
+                await _hub.Clients.All.SendAsync("Update", JsonSerializer.Serialize(LatestResponse, serializeOptions));
             }
         }
         public Task StopAsync(CancellationToken cancellationToken)
