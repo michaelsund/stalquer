@@ -1,7 +1,6 @@
 using System;
 using System.Net.WebSockets;
 using System.Text;
-using System.Runtime.Caching;
 using System.Text.Json;
 using System.Collections.Generic;
 using System.Threading;
@@ -19,7 +18,6 @@ namespace stalquer_server.Services
 {
     public class BadplaceService : IHostedService
     {
-        private readonly IMemoryCache _memoryCache;
         private readonly IHubContext<BadplaceHub> _hub;
         private readonly BadPlaceData _badplaceData;
 
@@ -49,10 +47,11 @@ namespace stalquer_server.Services
                 Console.WriteLine("Error fetching from badplace.");
             }
 
-            // Broadcast the result if any to all clients.
             var badplaceList = LatestResponse as List<BadPlaceResponse>;
-            if (badplaceList.Count > 0) {
-              await _hub.Clients.All.SendAsync("Update", JsonSerializer.Serialize(LatestResponse));
+            if (badplaceList.Count > 0)
+            {
+                // Broadcast to signalr clients
+                await _hub.Clients.All.SendAsync("Update", JsonSerializer.Serialize(LatestResponse));
             }
         }
         public Task StopAsync(CancellationToken cancellationToken)

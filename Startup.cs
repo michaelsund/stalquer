@@ -13,6 +13,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using stalquer_server.Hubs;
 using stalquer_server.Helpers;
+using stalquer_server.Models;
 
 namespace stalquer_server
 {
@@ -28,7 +29,6 @@ namespace stalquer_server
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMemoryCache();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -36,6 +36,7 @@ namespace stalquer_server
             });
             services.AddSignalR();
             services.AddHttpClient<BadPlaceData>();
+            services.AddSingleton<IBadplaceResponse>(new BadPlaceResponse());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

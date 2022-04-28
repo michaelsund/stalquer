@@ -702,23 +702,19 @@
     ]
   },
   "packageFolders": {
-    "/Users/michael/.nuget/packages/": {},
-    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
+    "/home/michael/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/michael/Code/stalquer/stalquer-server.csproj",
+      "projectUniqueName": "/home/michael/Code/stalquer/stalquer-server.csproj",
       "projectName": "stalquer-server",
-      "projectPath": "/Users/michael/Code/stalquer/stalquer-server.csproj",
-      "packagesPath": "/Users/michael/.nuget/packages/",
-      "outputPath": "/Users/michael/Code/stalquer/obj/",
+      "projectPath": "/home/michael/Code/stalquer/stalquer-server.csproj",
+      "packagesPath": "/home/michael/.nuget/packages/",
+      "outputPath": "/home/michael/Code/stalquer/obj/",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "/Users/michael/.nuget/NuGet/NuGet.Config"
+        "/home/michael/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
@@ -769,7 +765,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.402/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/home/michael/.dotnet/sdk/5.0.212/RuntimeIdentifierGraph.json"
       }
     }
   }
