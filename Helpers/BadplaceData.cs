@@ -15,13 +15,6 @@ namespace stalquer_server.Helpers
         public BadPlaceData(HttpClient client)
         {
             client.BaseAddress = new Uri("https://badplace.eu/");
-            // GitHub API versioning
-            // client.DefaultRequestHeaders.Add("Accept",
-                // "application/vnd.github.v3+json");
-            // GitHub requires a user-agent
-            // client.DefaultRequestHeaders.Add("User-Agent",
-                // "HttpClientFactory-Sample");
-
             Client = client;
         }
 

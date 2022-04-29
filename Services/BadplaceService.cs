@@ -1,6 +1,7 @@
 using System;
 using System.Net.WebSockets;
 using System.Text;
+using System.Linq;
 using System.Text.Json;
 using System.Collections.Generic;
 using System.Threading;
@@ -56,13 +57,22 @@ namespace stalquer_server.Services
                 Console.WriteLine("Error fetching from badplace.");
             }
 
-            var badplaceList = LatestResponse as List<BadPlaceResponse>;
-            if (badplaceList.Count > 0)
+            // Convert IEnumerable to List and remove ServeMe player
+            List<BadPlaceResponse> convertedResponse = LatestResponse.ToList();
+            for (int x = 0; x < convertedResponse.Count; x++)
             {
-                _badplaceResponseList.BadplaceResponses = LatestResponse;
-                // Broadcast to signalr clients
-                await _hub.Clients.All.SendAsync("Update", JsonSerializer.Serialize(LatestResponse, serializeOptions));
+                for (int y = 0; y < convertedResponse[x].Players.Count; y++)
+                {
+                    if (convertedResponse[x].Players[y].Name.Contains("ServeMe")) {
+                        convertedResponse[x].Players.RemoveAt(y);
+                    }
+                }
             }
+
+            // Update the singleton store.
+            _badplaceResponseList.BadplaceResponses = convertedResponse;
+            // Broadcast to signalr clients
+            await _hub.Clients.All.SendAsync("Update", JsonSerializer.Serialize(convertedResponse, serializeOptions));
         }
         public Task StopAsync(CancellationToken cancellationToken)
         {
