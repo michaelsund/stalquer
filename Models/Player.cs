@@ -11,5 +11,6 @@ namespace stalquer_server.Models
         public int Time { get; set; }
         public int Frags { get; set; }
         public string Team { get; set; }
+        public List<int> Colors { get; set; }
     }
 }
