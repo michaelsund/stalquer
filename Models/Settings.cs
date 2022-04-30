@@ -10,6 +10,6 @@ namespace stalquer_server.Models
         [JsonPropertyName("*version")]
         public string Version { get; set; }
         public int Deathmatch { get; set; }
-        public int TeamPlay { get; set; }
+        public int Teamplay { get; set; }
     }
 }
