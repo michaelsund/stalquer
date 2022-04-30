@@ -1,8 +1,11 @@
 <script>
-  import { badplaceData } from '../js/stores';
+  import {badplaceData} from '../js/stores';
+
+  // eslint-disable-next-line no-undef
   const connection = new signalR.HubConnectionBuilder()
-    .withUrl("/badplacehub")
+    .withUrl('/badplacehub')
     .withAutomaticReconnect()
+    // eslint-disable-next-line no-undef
     .configureLogging(signalR.LogLevel.Information)
     .build();
 
@@ -19,7 +22,8 @@
     await start();
   });
 
-  connection.on("Update", (message) => {
+  connection.on('Update', message => {
+    console.log('Got updated data from Hub!');
     badplaceData.set(JSON.parse(message));
   });
 

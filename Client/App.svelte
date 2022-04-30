@@ -1,20 +1,14 @@
 <script>
-  import SignalrHub from "./Components/SignalrHub.svelte";
-  import ServerList from "./Components/ServerList.svelte";
-  import FetchBadplaceData from "./Components/FetchBadplaceData.svelte";
-  import Footer from "./Components/Footer.svelte";
+  import SignalrHub from './Components/SignalrHub.svelte';
+  import ServerList from './Components/ServerList.svelte';
+  import FetchBadplaceData from './Components/FetchBadplaceData.svelte';
 </script>
 
 <main>
-  <content-wrapper>
-    <h1>
-      Stalquer
-    </h1>
-    <ServerList />
-    <FetchBadplaceData />
-    <SignalrHub />
-  </content-wrapper>
-  <Footer />
+  <h1>Stalquer</h1>
+  <ServerList />
+  <FetchBadplaceData />
+  <SignalrHub />
 </main>
 
 <style>
@@ -22,9 +16,7 @@
     margin: 0 auto;
     position: relative;
     min-height: 100vh;
-  }
-  content-wrapper {
-    padding-bottom: 5rem;
+    padding: 1em;
   }
   h1 {
     color: #ff3e00;

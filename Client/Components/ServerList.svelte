@@ -1,10 +1,10 @@
 <script>
-  import { badplaceData } from "../js/stores";
-  import { onDestroy } from "svelte";
-  import ServerCard from "./ServerCard.svelte";
+  import {badplaceData} from '../js/stores';
+  import {onDestroy} from 'svelte';
+  import ServerCard from './ServerCard.svelte';
 
   let badplaceDataValue;
-  const unsubscribe = badplaceData.subscribe((value) => {
+  const unsubscribe = badplaceData.subscribe(value => {
     badplaceDataValue = value;
   });
   onDestroy(unsubscribe);
@@ -20,8 +20,8 @@
   div {
     display: flex;
     flex-direction: row;
-    align-items: stretch;
-    justify-content: space-around;
+    align-items: flex-start;
+    justify-content: flex-start;
     flex-wrap: wrap;
   }
 </style>
