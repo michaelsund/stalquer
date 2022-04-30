@@ -9,5 +9,7 @@ namespace stalquer_server.Models
         public int Timelimit { get; set; }
         [JsonPropertyName("*version")]
         public string Version { get; set; }
+        public int Deathmatch { get; set; }
+        public int TeamPlay { get; set; }
     }
 }
