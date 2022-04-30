@@ -20,8 +20,16 @@ namespace stalquer_server.Helpers
 
         public async Task<IEnumerable<BadPlaceResponse>> GetBadplaceData()
         {
-            return await Client.GetFromJsonAsync<IEnumerable<BadPlaceResponse>>(
-              "/api/v2/serverbrowser/busy");
+            try
+            {
+                var data = await Client.GetFromJsonAsync<IEnumerable<BadPlaceResponse>>("/api/v2/serverbrowser/busy");
+                return data;
+            }
+            catch (HttpRequestException e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
     }
 }
