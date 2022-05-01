@@ -35,4 +35,9 @@ Both svelte and .net dev with hot reloading for both via rollup
 
 To debug .net and hit breakpoints, debug via vscode or visual-studio.
 
+### docker
+
+docker build -t stalquer .
+
+docker run -it --rm -p 5001:5001 --name Stalquer -v /home/myuser/Certs/stalquer/:/https/ -e ASPNETCORE_HTTPS_PORT=5001 -e ASPNETCORE_Kestrel__Certificates__Default__Password="certificatepassword" -e ASPNETCORE_Kestrel__Certificates__Default__Path=/https/yourcert.pfx stalquer-server
 
