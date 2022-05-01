@@ -1,12 +1,11 @@
 import svelte from 'rollup-plugin-svelte';
-import {config} from 'dotenv';
-import replace from '@rollup/plugin-replace';
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import livereload from 'rollup-plugin-livereload';
 import {terser} from 'rollup-plugin-terser';
 import css from 'rollup-plugin-css-only';
 import json from '@rollup/plugin-json';
+import replace from '@rollup/plugin-replace';
 
 const production = !process.env.ROLLUP_WATCH;
 console.log('Production mode: ' + production);
@@ -41,6 +40,9 @@ export default {
     file: 'wwwroot/build/bundle.js'
   },
   plugins: [
+    replace({
+      API_URL: production ? "'https://opp.osund.com:5001'" : "'https://localhost:5001'"
+    }),
     json(),
     svelte({
       compilerOptions: {
@@ -62,16 +64,6 @@ export default {
       dedupe: ['svelte']
     }),
     commonjs(),
-
-    replace({
-      // stringify the object
-      stalquerEnv: JSON.stringify({
-        env: {
-          isProd: production,
-          ...config().parsed // attached the .env config
-        }
-      })
-    }),
 
     // In dev mode, call `npm run start` once
     // the bundle has been generated
