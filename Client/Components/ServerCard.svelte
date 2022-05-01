@@ -1,5 +1,6 @@
 <script>
   import TeamsAndPlayers from './TeamsAndPlayers.svelte';
+  import ActionButtons from './ActionButtons.svelte';
   export let server;
 
   // const gameMode = deathmatch => {
@@ -29,6 +30,7 @@
     <p>Map: {server.map}</p>
     <!-- <p>deathmath: {server.settings.deathmatch} teamplay: {server.settings.teamplay}</p> -->
     <!-- <p>Mode: {gameMode(server.settings.deathmatch, server.settings.teamplay)}</p> -->
+    <ActionButtons server={server} />
   </body-info>  
 </div>
 
@@ -43,6 +45,7 @@
     border-radius: 5px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     min-width: 25%;
+    overflow: hidden;
   }
   header-image {
     border-radius: 5px 5px 0 0;
@@ -58,5 +61,7 @@
   }
   body-info {
     padding: 1em;
+    width: 100%;
+    box-sizing: border-box;
   }
 </style>
