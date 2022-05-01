@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "dotnet build && rollup -c",
+    "build": "rollup -c",
     "dev": "rollup -c -w",
     "format": "prettier --write 'Client/**/*.{css,html,js,svelte}'",
     "lint": "eslint --fix --quiet Client --ext .js,.svelte"
