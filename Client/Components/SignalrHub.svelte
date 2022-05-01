@@ -2,8 +2,12 @@
   import {badplaceData} from '../js/stores';
 
   // eslint-disable-next-line no-undef
+  const isProd = stalquerEnv.env.isProd;
+  // eslint-disable-next-line no-undef
+  const apiUrl = stalquerEnv.env.API_URL;
+  // eslint-disable-next-line no-undef
   const connection = new signalR.HubConnectionBuilder()
-    .withUrl('/badplacehub')
+    .withUrl(isProd ? apiUrl + '/badplace' : '/badplacehub')
     .withAutomaticReconnect()
     // eslint-disable-next-line no-undef
     .configureLogging(signalR.LogLevel.Information)

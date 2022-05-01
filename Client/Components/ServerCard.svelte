@@ -47,7 +47,7 @@
   header-image {
     border-radius: 5px 5px 0 0;
     background-color: black;
-    height: 20em;
+    min-height: 20em;
     width: 100%;
     background-repeat: no-repeat;
     background-position: center center;
